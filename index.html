@@ -946,15 +946,19 @@ body{font-family:var(--fn);background:linear-gradient(135deg,#f0fdf4 0%,#f5f3ff 
 // 1. FIREBASE CONFIGURATION
 // ==========================================
 var firebaseConfig = {
-  apiKey: "AIzaSyAkYmdIMvvLo7gb3OUHHMudjxmXEzGqOFI",
-  authDomain: "carbon-neutral-future.firebaseapp.com",
-  databaseURL: "https://carbon-neutral-future-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "carbon-neutral-future",
-  storageBucket: "carbon-neutral-future.firebasestorage.app",
-  messagingSenderId: "216395542949",
-  appId: "1:216395542949:web:967c060de4e1c6e76a784c",
-  measurementId: "G-5H8F5L677N"
+  apiKey: "AIzaSyBvtSlXa2chOXDml3bqFCPP8P_YGhGyeX8",
+  authDomain: "my-carbon-footprint-2a5aa.firebaseapp.com",
+  databaseURL: "https://my-carbon-footprint-2a5aa-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "my-carbon-footprint-2a5aa",
+  storageBucket: "my-carbon-footprint-2a5aa.firebasestorage.app",
+  messagingSenderId: "512029098556",
+  appId: "1:512029098556:web:09a4b7e223e0391e18b939",
+  measurementId: "G-QVNCVRCSNH"
 };
+
+// สั่งเริ่มต้นใช้งาน Firebase
+firebase.initializeApp(firebaseConfig);
+var db = firebase.database();
 
 firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
