@@ -2660,5 +2660,43 @@ var currentPage = document.querySelector('.page.active');
 if(currentPage && currentPage.id === 'p1') buildSurveyGrid();
 if(currentPage && currentPage.id === 'p2') buildCalcGrid();
 </script>
+  <script>
+// ปลดล็อกทุกปุ่มอัตโนมัติและซ่อนช่องใส่รหัสผ่านทั้งหมด
+(function removeAllPasswords() {
+  // 1. ซ่อนแถบใส่รหัสปลดล็อกของครูทั้งหมด
+  var strips = ['poll-unlock-strip', 'p3b-lock-strip', 'p7b-lock-strip'];
+  strips.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+
+  // 2. ซ่อนกล่องรหัสผ่านหน้า प4 (Unlock Global Impact)
+  var p4Input = document.getElementById('p4-impact-pw');
+  if (p4Input && p4Input.parentElement && p4Input.parentElement.parentElement) {
+    p4Input.parentElement.parentElement.style.display = 'none';
+  }
+
+  // 3. ซ่อนช่องกรอกรหัสเข้า Teacher Dashboard แล้วเปลี่ยนปุ่มให้เข้าได้ทันที
+  ['pw-t', 'pw-t2', 'pw-et'].forEach(function(id) {
+    var inp = document.getElementById(id);
+    if (inp) inp.style.display = 'none';
+  });
+  window.checkTPW = function() { go('p4-class'); };
+  window.checkTPW2 = function() { go('p7-new-class'); };
+  window.checkETPW = function() { go('p11-et-dashboard'); };
+
+  // 4. บังคับให้ฟังก์ชันล็อกปุ่มทำงานเป็นฟังก์ชันปลดล็อกแทนทั้งหมด
+  window.resetPollLock = window.unlockPollUI;
+  window.resetImpactLock = window.unlockImpactNextBtn;
+  window.resetRedesignLock = window.unlockRedesignUI;
+  window.resetFinalLock = window.unlockFinalUI;
+
+  // 5. สั่งปลดล็อกปุ่มทั้งหมดทันทีตอนเปิดเว็บ
+  unlockPollUI();
+  unlockImpactNextBtn();
+  unlockRedesignUI();
+  unlockFinalUI();
+})();
+</script>
 </body>
 </html>
